@@ -1,91 +1,68 @@
-# Module Project: The Reducer Pattern - Reducer Todo
+# React-Todo
 
-This project allows you to practice the concepts and techniques learned in this module and apply them in a concrete project. This module explored the reducer pattern. During the module, you studied what immutability is, what reducers, actions and dispatch are, and how to use the reducer hook. In your project you will demonstrate proficiency of these subjects and principles by creating an application using each of these.
+We're going to practice building a stateful class component with this project. Even though hooks are gaining popularity among react developers, class components are going to be around for a long time. It's imperative that you get use to class components, and feel comfortable working with class components since you'll most likely need to work with them if you are hired to work on a React app.
+
+## Initializing the project.
+
+[x]- `Fork and clone` this project and cd into your cloned version.
+[x]- `npm install` or `yarn install` will pull in all the node_modules you need.
+[x]- `npm start` or `yarn start` will start a development server on your `http://localhost:3000`.
+[x] - If npm or yarn asks you to select different port with some error message, just confirm and it will pull it up on port 3001. This simply means you have a development server up and running on that port already.
 
 ## Instructions
 
-**Read these instructions carefully. Understand exactly what is expected _before_ starting this project.**
+- Your job is to write the components to complete the Todo List application.
+- Your todo list should be fully functional and you should design it however you'd like. Feel free to get creative here. I have supplied a gif for you to see what the MVP functionality is.
 
-### Commits
+![Todo App MVP](todo.gif)
 
-Commit your code regularly and meaningfully. This helps both you and your team lead in case you ever need to return to old code for any number of reasons.
-
-### Description
-
-In this project, you build an app that let's you display a todo list from reducer state, and update todo items as completed and clear completed todos from the list by dispatching different actions.
-
-## Project Set Up
-
-- [ ] Create a forked copy of this project.
-- [ ] Add your team lead as collaborator on Github.
-- [ ] Clone your OWN version of the repository in your terminal
-- [ ] CD into the project base directory `cd reducer-todo`
-- [ ] Create a new react app using CRA
-- [ ] Using the same command tool (yarn or npm) start up the app using `yarn start` or `npm start`
-- [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
-- [ ] Push commits: git push origin `<firstName-lastName>`.
-
-Follow these steps for completing your project.
-
-- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repository). **Please don't merge your own pull request**
-- [ ] Add your team lead as a reviewer on the pull-request
-- [ ] Your team lead will count the project as complete by merging the branch back into master.
-- [ ] Do your magic!
-
-## Minimum Viable Product
-
-1. Set an initial state value through a reducer and render a list of todos from that state
-1. Add a form that dispatches an "ADD_TODO" action to be able to add a todo item to your list
-1. Build a function that let's you mark todo items as completed when you click on them
-1. Biuld a function that let's you clear completed todos when you click on a "Clear Completed" button
-
-### STEP 1 - Build a simple reducer and initial state
-
-- In a folder called `reducers` add a reducer file and build out a simple reducer with just a default return for now
-- In the same file, build your initial state object that has a list of todos with the following shape:
+- Your todo data should be an array of objects that look a lot like this:
 
 ```js
-{
-  item: 'Learn about reducers',
-  completed: false,
-  id: 3892987589
-}
+[
+  {
+    task: 'Organize Garage',
+    id: 1528817077286,
+    completed: false
+  },
+  {
+    task: 'Bake Cookies',
+    id: 1528817084358,
+    completed: false
+  }
+];
 ```
 
-- Export both the reducer and the initial state object
+- The `task` field is the todo title that will be shown to the user.
+- The `completed` field should default to `false` and will be the field that we toggle when we complete a todo.
+- The `id` field is a unique `Time Stamp` that will be assigned by `Date.now()`.
 
-### STEP 2 - Set up state in your component
+#### Instructions
 
-You get to choose how you want to set up your components. Please don't just do this all inside App. I know it is a small and simple project, but you will do yourself a great service by setting your app up as if it were going to be a larger application
+- **Don't focus on styling yet**. We want you to worry about function over form today.
+- Your todo list should display a list of todos, an input field, a submit button, and a clear all button.
+- Be sure to use the given files for building out these components.
+- `<App />` will hold all the data needed for this project. It will also be the container for your Todo Components.
+  - All of your application data will be stored here on `<App />`.
+  - All of your `handler` functions should live here on `<App />`.
+- `<TodoList />` receives your Todos array and iterates over the list generating a new `<Todo />` for each element in the array.
+- `<Todo />` is a component that takes in the `todo` data and displays the task to the screen.
+- `<TodoForm>` will hold your input field and your `Add Todo` and `Clear Completed` buttons.
+  - Your input field should take in user input, and allow a user to press `Enter` or click on the `Submit Button` to add a todo to your list.
+  - Once a todo is submitted, the Todo List should re-render and show the added todo.
 
-- Using the `reducer` hook, set up state in your component. Think about what you'll need in order to use the reducer hook, and think about what it returns.
-- Now render your list of todos from your reducer in your app
+---
 
-### STEP 3 - Adding todos
+- Add the functionality to toggle your todo's completed flag from `false` to `true`.
+  - Once a todo is completed, be sure to demonstrate to the user that the todo is completed by adding a line-through style property if the completed flag is true.
+- Add the ability to remove any todos that you have completed. `.filter` will be your best friend here. When a user clicks on the `Clear Completed` button call your handler function that will filter out any todos that have the completed flag toggled to `true`.
+- **Now is the time to style** Take your time to make this an app that you can be proud of.
 
-- Build a form to add todos to your list
-- Build a function that will dispatch an action to add a new todo
-- Write the `case` in your reducer for adding a todo (You can create a unique id with `new Date()`)
+#### Stretch Problems
 
-### STEP 4 - Toggle the completed field
+- **Persist your data** in `window.localStorage()` hint: you may have to pass your data to a stringifier to get it to live inside the `localStorage()` of the browser. This will cause it to persist past the page refresh.
 
-- Build a function that will dispatch an action to toggle a todo's completed field
-- Invoke this new function when you click on a todo
-- Style your todo to somehow show that it is completed (be creative here!)
-- Write the `case` in your reducer for toggling the completed property
+- **Search Functionality** Add a input bar that allows you to search through your tasks and only show the ones that match the search input.
 
-### STEP 5 - Clearing completed todos
+- **Hosting** Create a [Netlify Account](https://www.netlify.com/) and follow the tutorial on how to host your shiny new todo app on the world wide web.
 
-- Build a function that will dispatch an action to filter out any completed todos
-- Invoke this new function when you click on a "Clear completed" button
-- Write the `case` in your reducer for filtering completed todos
-
-## Stretch Problems
-
-After finishing your required elements, you can push your work further. These goals may or may not be things you have learned in this module but they build on the material you just studied. Time allowing, stretch your limits and see if you can deliver on the following optional goals:
-
-- Add the moment library to show in "human speak" when a todo was completed
-- Add a property on the todos for when a todo should be completed by. Then display that a todo is "overdue" if it has not been completed by its due date
-- Add "tags" to your todos, and display them with your todo list
-- Have fun with the styling. Make this something you'd be proud to show off!
