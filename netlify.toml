@@ -1,4 +1,0 @@
-[build]
-base = "project/"
-publish = "project/build/"
-command = "echo 'default context'"
