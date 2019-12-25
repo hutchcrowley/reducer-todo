@@ -1,10 +1,4 @@
-export const todos = [
-  {
-    task: "",
-    id: "",
-    completed: false
-  }
-];
+export const initialState = [];
 
 // Reducer function.
 export const reducer = (state, action) => {
@@ -15,7 +9,7 @@ export const reducer = (state, action) => {
           {
           item: action.payload,
           completed: false,
-          id: Date.now()
+          id: Date.now(),
           }
         ]
       );
@@ -28,6 +22,8 @@ export const reducer = (state, action) => {
           ? { ...todo, completed: !todo.completed }
           : todo
       );
+      case 'CLEAR_ALL':
+        return initialState
     default:
       return state;
   }

@@ -1,12 +1,12 @@
 import React, { useReducer } from "react";
 
-import TodoForm from '../src/components/TodoComponents/TodoForm';
-import TodoList from '../src/components/TodoComponents/TodoList';
-import { useInput } from './components/useInput';
+import TodoForm from "../src/components/TodoComponents/TodoForm";
+import TodoList from "../src/components/TodoComponents/TodoList";
+import { useInput } from "./components/useInput";
 
-import { todos, reducer } from './reducers/reducer';
+import { initialState, reducer } from "./reducers/reducer";
 
-import './App';
+import "./App.css";
 
 // you will need a place to store your state in this component.
 // design `App` to be the parent component of your application.
@@ -14,41 +14,53 @@ import './App';
 
 const App = () => {
   //  Use the useReducer hook, destructure two properties: state, dispatch. Pass in reducer and initialState to the function
-  const [todoList, dispatch] = useReducer(reducer, todos);
-  const [todoInput, setTodoInput, handleTodoInput] = useInput('');
+  const [todoList, dispatch] = useReducer(reducer, initialState);
+  const [todoInput, setTodoInput, handleTodoInput] = useInput("");
 
-  console.log(todos);
+  console.log(initialState);
 
   const handleSubmit = event => {
     const value = event.target.todoInput.value;
-    dispatch({
-      type: 'ADD',
-      payload: value
-    })
-    setTodoInput('');
-    console.log(event.target.value);
+    if (todoInput !== "") {
+      dispatch({
+        type: "ADD",
+        payload: value
+      });
+      setTodoInput("");
+      console.log(event.target.todoInput.value);
+    } else {
+      alert("Enter a new ToDo!");
+    }
     event.preventDefault();
+  };
 
-  }
-
+  const clearAll = (todoList, initialState) => {
+    if (todoList !== initialState) {
+      console.log(todoList);
+      dispatch({
+        type: "CLEAR_ALL",
+        payload: initialState
+      });
+    }
+  };
 
   // Display the Todo List
   return (
-    <div className='container'>
-      <h1 className='app-header-one'>ToDo List:</h1>
-      <TodoForm
-        todoInput={todoInput}
-        handleTodoInput={handleTodoInput}
-        handleSubmit={handleSubmit}
-        dispatch={dispatch}
-      />
-      <TodoList 
-      todoList={todoList}
-      dispatch={dispatch}
-      />
+    <div className="App">
+      <div className="container">
+        <h1>ToDo List:</h1>
+        <TodoForm
+          todoInput={todoInput}
+          handleTodoInput={handleTodoInput}
+          handleSubmit={handleSubmit}
+          dispatch={dispatch}
+          clearAll={clearAll}
+          value=""
+        />
+      </div>
+      <TodoList todoList={todoList} dispatch={dispatch} />
     </div>
   );
-}
-
+};
 
 export default App;
