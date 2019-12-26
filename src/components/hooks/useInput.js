@@ -1,12 +1,11 @@
- import useLocalStorage from './useLocalStorage.js'
+import { useState } from 'react'
 
- export const useInput = (initialValue) => {
-    const [value, setValue] = useLocalStorage(initialValue);
+export const useInput = initialValue => {
+  const [value, setValue] = useState(initialValue)
 
-    const handleChange = (updatedValue) => {
-        setValue(updatedValue);
-    }
+  const handleChange = updatedValue => {
+    setValue(updatedValue)
+  }
 
-    return [value, setValue, handleChange, initialValue];
-
+  return [value, setValue, handleChange, initialValue]
 }
