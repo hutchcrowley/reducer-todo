@@ -4,12 +4,33 @@ We're going to practice building a stateful class component with this project. E
 
 ## Initializing the project.
 
+<<<<<<< refs/remotes/origin/hutchcrowley
 [x]- `Fork and clone` this project and cd into your cloned version.
 [x]- `npm install` or `yarn install` will pull in all the node_modules you need.
 [x]- `npm start` or `yarn start` will start a development server on your `http://localhost:3000`.
 [x] - If npm or yarn asks you to select different port with some error message, just confirm and it will pull it up on port 3001. This simply means you have a development server up and running on that port already.
 
 ## Instructions
+=======
+- [x] Create a forked copy of this project.
+- [x] Add your team lead as collaborator on Github.
+- [x] Clone your OWN version of the repository in your terminal
+- [x] CD into the project base directory `cd reducer-todo`
+- [x] Create a new react app using CRA
+- [x] Using the same command tool (yarn or npm) start up the app using `yarn start` or `npm start`
+- [x] Create a new branch: git checkout -b `<firstName-lastName>`.
+- [x] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
+- [x] Push commits: git push origin `<firstName-lastName>`.
+
+Follow these steps for completing your project.
+
+- [x] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repository). **Please don't merge your own pull request**
+- [x] Add your team lead as a reviewer on the pull-request
+- [x] Your team lead will count the project as complete by merging the branch back into master.
+- [x] Do your magic!
+
+## Minimum Viable Product
+>>>>>>> init commit
 
 - Your job is to write the components to complete the Todo List application.
 - Your todo list should be fully functional and you should design it however you'd like. Feel free to get creative here. I have supplied a gif for you to see what the MVP functionality is.

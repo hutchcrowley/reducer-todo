@@ -1,6 +1,6 @@
 export const initialState = [];
 
-// Reducer function.
+// Reducer function: interacts with state and changes the data. 
 export const reducer = (state, action) => {
   switch (action.type) {
     case "ADD":

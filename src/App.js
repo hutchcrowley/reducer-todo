@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 
 import TodoForm from "../src/components/TodoComponents/TodoForm";
 import TodoList from "../src/components/TodoComponents/TodoList";
-import { useInput } from "./components/useInput";
+import { useInput } from "./components/hooks/useInput";
 
 import { initialState, reducer } from "./reducers/reducer";
 
@@ -15,7 +15,7 @@ import "./App.css";
 const App = () => {
   //  Use the useReducer hook, destructure two properties: state, dispatch. Pass in reducer and initialState to the function
   const [todoList, dispatch] = useReducer(reducer, initialState);
-  const [todoInput, setTodoInput, handleTodoInput] = useInput("");
+  const [todoInput, setTodoInput, handleTodoInput, value] = useInput([]);
 
   console.log(initialState);
 
@@ -55,7 +55,7 @@ const App = () => {
           handleSubmit={handleSubmit}
           dispatch={dispatch}
           clearAll={clearAll}
-          value=""
+          value={value}
         />
       </div>
       <TodoList todoList={todoList} dispatch={dispatch} />

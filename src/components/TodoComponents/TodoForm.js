@@ -9,7 +9,7 @@ const TodoForm = ({
 }) => {
   return (
     // Input form for todo list
-    <form className="todo-form" onSubmit={handleSubmit} clearAll={clearAll} netlify>
+    <form className="todo-form" onSubmit={handleSubmit} clearAll={clearAll} data-netlify='true'>
       {/* Input text box for a new todo item */}
       <label>
         <h3>Add a ToDo Item!</h3>
