@@ -9,7 +9,7 @@ const SearchForm = ({ searchInput, handleSearchInput, handleSearch }) => {
           name='searchInput'
           placeholder='search'
           value={searchInput}
-          onChange={e => handleSearchInput(e.target.value)}
+          onChange={handleSearchInput}
         />
       </label>
 
