@@ -1,7 +1,8 @@
 import React, { useReducer, useEffect } from 'react'
 // Import the form and list components
-import TodoForm from '../src/components/TodoComponents/TodoForm'
-import TodoList from '../src/components/TodoComponents/TodoList'
+import TodoForm from './components/TodoComponents/TodoForm'
+import TodoList from './components/TodoComponents/TodoList'
+import SearchForm from './components/TodoComponents/SearchForm'
 // Import custom hooks
 import { useInput } from './components/hooks/useInput'
 import { initialState, reducer } from './reducers/reducer'
@@ -14,7 +15,14 @@ import './App.css'
 
 const App = () => {
   //   Custom hook that handles input data
-  const [todoInput, setTodoInput, handleTodoInput, value] = useInput([])
+  const [
+    todoInput,
+    setTodoInput,
+    handleTodoInput,
+    value,
+    searchInput,
+    handleSearchInput
+  ] = useInput([])
 
   //  Calling the useReducer hook, taking the state of the todoList on first render, pulling the data from local storage if there is any, and if not, returning the initialState, which is a blank array, set in the reducer file.
   const [todoList, dispatch] = useReducer(reducer, initialState, () => {
@@ -27,11 +35,10 @@ const App = () => {
     localStorage.setItem('todoList', JSON.stringify(todoList))
   }, [todoList])
 
-  console.log('Initial state in the App component: ', initialState)
-
-//   Function to handle adding a todo item.
+  //   Function to handle adding a todo item.
   const handleSubmit = event => {
     const value = event.target.todoInput.value
+    console.log(value)
     if (todoInput !== '') {
       dispatch({
         type: 'ADD',
@@ -42,6 +49,19 @@ const App = () => {
       alert('Enter a new ToDo!')
     }
     event.preventDefault()
+  }
+
+  const handleSearch = e => {
+    e.preventDefault()
+    const value = e.target.searchInput.value
+    if (searchInput !== '') {
+      dispatch({
+        type: 'SEARCH',
+        payload: value
+      })
+    } else {
+      alert('Enter a value in the search field.')
+    }
   }
 
   const clearAll = (todoList, initialState) => {
@@ -57,7 +77,7 @@ const App = () => {
   // Display the Todo List
   return (
     <div className='App'>
-      <div className='container'>
+      <div className='form-container'>
         <h1>ToDo List:</h1>
         <TodoForm
           todoInput={todoInput}
@@ -65,6 +85,14 @@ const App = () => {
           handleSubmit={handleSubmit}
           dispatch={dispatch}
           clearAll={clearAll}
+          value={value}
+        />
+      </div>
+      <div className='search-container'>
+        <SearchForm
+          searchInput={searchInput}
+          handleSearch={handleSearch}
+          handleSearchInput={handleSearchInput}
           value={value}
         />
       </div>

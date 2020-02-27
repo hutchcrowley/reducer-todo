@@ -224,11 +224,11 @@ body {
     margin-top: 0.1rem;
 }
 
-.container {
+.form-container {
     width: 90%;
 }
 
-.container h1 {
+.form-container h1 {
     font-size: 30pt;
     margin-top: 1rem;
     letter-spacing: 0.3rem;
@@ -282,9 +282,6 @@ label {
     border-radius: 10px;
 }
 
-
-
-
 /* Larger than tablet */
 
 @media (max-width: 750px) {
@@ -300,10 +297,10 @@ label {
         height: auto;
         margin-top: 6rem;
     }
-    .container {
+    .form-container {
         width: 70%;
     }
-    .container h1 {
+    .form-container h1 {
         width: 90%;
         font-size: 30pt;
         margin-top: 1rem;
@@ -337,7 +334,6 @@ label {
         border: 2px solid #ffffff;
         border-radius: 10px;
     }
-
     /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
     .button, button, input[type="submit"], input[type="reset"], input[type="button"] {
@@ -383,29 +379,26 @@ label {
 
 /* Larger than mobile */
 
-@media (max-width: 400px) {
+@media screen and (max-width: 400px) {
     html, body {
         height: auto;
-        width: auto;
+        width: 100vw;
+    }
+    #root {
+        width: 100%;
     }
     .App {
-        display: flex;
-        justify-content: center;
         height: auto;
-        width: auto;
+        width: 90%;
         text-align: center;
     }
-    .container {
-        width: 90%;
-    }
-    .container h1 {
+    .form-container h1 {
         font-size: 30pt;
         margin-top: 1rem;
         margin-left: 2rem;
         letter-spacing: 0.3rem;
     }
     #root {
-        width: 90%;
         padding: 0;
     }
     label {
@@ -413,8 +406,9 @@ label {
         height: auto;
     }
     .todo-form {
+        width: 100%;
         display: flex;
-        flex-flow: column wrap;
+        flex-flow: column nowrap;
         align-items: center;
         padding: 1rem;
         color: #ffffff;
@@ -433,6 +427,7 @@ label {
     .todo-list {
         width: 90%;
         display: flex;
+        flex-flow: column nowrap;
         justify-content: center;
     }
     .todo-item {
@@ -447,7 +442,7 @@ label {
     .button, button, input[type="submit"], input[type="reset"], input[type="button"] {
         display: inline-block;
         height: 45px;
-        padding: 0 30px;
+        padding: 0 10px;
         color: #555;
         text-align: center;
         font-size: 11px;
@@ -475,7 +470,7 @@ label {
         color: #000000;
         font-weight: 190%;
         font-size: 10pt;
-        width: 10rem;
+        width: 5rem;
         height: 60px;
     }
     .button.button-primary:hover, button.button-primary:hover, input[type="submit"].button-primary:hover, input[type="reset"].button-primary:hover, input[type="button"].button-primary:hover, .button.button-primary:focus, button.button-primary:focus, input[type="submit"].button-primary:focus, input[type="reset"].button-primary:focus, input[type="button"].button-primary:focus {
